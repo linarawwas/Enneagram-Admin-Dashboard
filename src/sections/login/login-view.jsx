@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
+
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
 import Card from '@mui/material/Card';
+import { Button } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 import TextField from '@mui/material/TextField';
@@ -11,8 +12,11 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import LoadingButton from '@mui/lab/LoadingButton';
 import InputAdornment from '@mui/material/InputAdornment';
+
 import { useRouter } from 'src/routes/hooks';
+
 import { bgGradient } from 'src/theme/css';
+
 import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
@@ -31,7 +35,7 @@ export default function LoginView() {
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:5000/auth/login', {
+      const response = await fetch('http://localhost:5000/auth/login-admin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -86,7 +90,7 @@ export default function LoginView() {
       </Stack>
 
       <Stack direction="row" alignItems="center" justifyContent="flex-end" sx={{ my: 3 }}>
-        <Link
+        <Button
           variant="subtitle2"
           underline="hover"
           onClick={() => {
@@ -94,7 +98,7 @@ export default function LoginView() {
           }}
         >
           Go to user view?{' '}
-        </Link>
+        </Button>
       </Stack>
 
       <LoadingButton

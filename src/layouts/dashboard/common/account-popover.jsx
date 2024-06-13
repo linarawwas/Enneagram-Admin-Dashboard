@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import Popover from '@mui/material/Popover';
@@ -6,8 +7,10 @@ import { alpha } from '@mui/material/styles';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 
-import { account } from 'src/_mock/account';
 import { useRouter } from 'src/routes/hooks';
+
+import { account } from 'src/_mock/account';
+
 
 // ----------------------------------------------------------------------
 
