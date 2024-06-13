@@ -1,23 +1,26 @@
-import { useEffect, useState } from 'react';
-
+import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
+import Divider from '@mui/material/Divider';
 import Popover from '@mui/material/Popover';
 import { alpha } from '@mui/material/styles';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 
 import { account } from 'src/_mock/account';
+import { useRouter } from 'src/routes/hooks';
 
 // ----------------------------------------------------------------------
 
 export default function AccountPopover() {
   const [open, setOpen] = useState(null);
-
+  const router = useRouter();
   const handleOpen = (event) => {
     setOpen(event.currentTarget);
   };
 
-
+  const handleClose = () => {
+    router.push('/login');
+  };
 
   return (
     <>
@@ -46,6 +49,32 @@ export default function AccountPopover() {
         </Avatar>
       </IconButton>
 
+      <Popover
+        open={!!open}
+        anchorEl={open}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        PaperProps={{
+          sx: {
+            p: 0,
+            mt: 1,
+            ml: 0.75,
+            width: 200,
+          },
+        }}
+      >
+        <Divider sx={{ borderStyle: 'dashed', m: 0 }} />
+
+        <MenuItem
+          disableRipple
+          disableTouchRipple
+          onClick={handleClose}
+          sx={{ typography: 'body2', color: 'error.main', py: 1.5 }}
+        >
+          Logout
+        </MenuItem>
+      </Popover>
     </>
   );
 }
