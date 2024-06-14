@@ -9,6 +9,21 @@ export const visuallyHidden = {
   whiteSpace: 'nowrap',
   clip: 'rect(0 0 0 0)',
 };
+export const transformApiResponse = (response) => {
+  const data = [];
+  Object.keys(response).forEach((category) => {
+      response[category].forEach((question) => {
+          data.push({
+              category,
+              questionText: question.questionText,
+              grade: question.grade,
+          });
+      });
+  });
+  return data;
+};
+
+
 
 export function emptyRows(page, rowsPerPage, arrayLength) {
   return page ? Math.max(0, (1 + page) * rowsPerPage - arrayLength) : 0;
@@ -29,6 +44,7 @@ function descendingComparator(a, b, orderBy) {
   }
   return 0;
 }
+
 export function getComparator(order, orderBy) {
   return order === 'desc'
     ? (a, b) => descendingComparator(a, b, orderBy)

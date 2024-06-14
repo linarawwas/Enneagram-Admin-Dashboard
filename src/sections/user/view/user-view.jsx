@@ -123,7 +123,7 @@ export default function UserPage() {
                 {dataFiltered
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => (
-                    <UserTableRow key={row.id} name={row.name} role={row.email} />
+                    <UserTableRow key={row.id} name={row.name} role={row.email} id={row.id} />
                   ))}
 
                 <TableEmptyRows
